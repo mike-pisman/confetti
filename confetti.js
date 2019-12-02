@@ -2,6 +2,13 @@
 var pieces = [];
 var numberOfPieces = 100;
 
+window.onload = function() {
+    canvas = document.getElementById('gameCanvas');
+    ctx = canvas.getContext('2d');
+
+    setInterval( function(){ drawConfetti(); }, 1000/30);
+}
+
 function randomColor () {
     var colors = ['#f00', '#0f0', '#00f', '#0ff', '#f0f', '#ff0'];
     return colors[Math.floor(Math.random() * colors.length)];
@@ -9,13 +16,13 @@ function randomColor () {
 
 function confettiPiece(x, y, width, height, r, c) {
 
+    ctx.fillStyle = c;
+
     // Calculate Corners of the figure
     var a = x - width, b = y - height;
     var c = x + width, d = y - height;
     var h = x + width, j = y + height;
     var k = x - width, l = y + height;
-
-    ctx.fillStyle = c;
 
     ctx.beginPath();
         ctx.moveTo(Math.cos(r)*(a - x) + Math.sin(r)*(b - y) + x, -Math.sin(r)*(a - x) + Math.cos(r)*(b - y) + y);
@@ -30,8 +37,9 @@ function drawConfetti () {
     ctx.fillStyle = "#fff";
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
+
     while (pieces.length < numberOfPieces) {
-        pieces.push(new Piece(Math.random() * canvas.width, 10));
+        pieces.push(new Piece(Math.random() * canvas.width, -20));
     }
 
     console.log(pieces.length);
