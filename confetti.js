@@ -6,7 +6,7 @@ window.onload = function() {
     canvas = document.getElementById('gameCanvas');
     ctx = canvas.getContext('2d');
 
-    setInterval( function(){ drawConfetti(); }, 1000/30);
+    setInterval( function(){ drawConfetti(); }, 1000/60);
 }
 
 function randomColor () {
@@ -30,30 +30,34 @@ function confettiPiece(x, y, width, height, r, c) {
         ctx.lineTo(Math.cos(r)*(h - x) + Math.sin(r)*(j - y) + x, -Math.sin(r)*(h - x) + Math.cos(r)*(j - y) + y);
         ctx.lineTo(Math.cos(r)*(k - x) + Math.sin(r)*(l - y) + x, -Math.sin(r)*(k - x) + Math.cos(r)*(l - y) + y);
     ctx.fill();
+
+
 }
 
 function drawConfetti () {
+
+
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
 
     ctx.fillStyle = "#fff";
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
 
     while (pieces.length < numberOfPieces) {
-        pieces.push(new Piece(Math.random() * canvas.width, -20));
+        pieces.push(new Piece(Math.random() * canvas.width, 0));
     }
-
-    console.log(pieces.length);
 
     for (var i = 0; i < pieces.length; i++) {
         var p = pieces[i];
 
-        if (p.y > canvas.height) {
+        if (p.y > canvas.height + p.height) {
             pieces.splice(i, 1);
             continue;
         }
 
-        p.y += p.gravity;
-        p.x += p.rotationSpeed;
+        p.y += p.gravity * canvas.height / 200;
+        p.x += p.rotationSpeed * 10;
         p.rotation += p.rotationSpeed;
 
         confettiPiece(p.x, p.y, p.width, p.height, p.rotation, p.color);
@@ -63,10 +67,10 @@ function drawConfetti () {
 function Piece (x, y) {
     this.x = x;
     this.y = y;
-    this.width = Math.random() * 2;
-    this.height = this.width * Math.random() * 4;
-    this.gravity = (Math.random() + 1);
+    this.width = Math.random() * 4;
+    this.height = Math.random() * this.width;
+    this.gravity = (Math.random() + 0.3);
     this.rotation = 0;
-    this.rotationSpeed = (Math.random()*2 - 1) * 0.2;
+    this.rotationSpeed = (Math.random()*2 - 1) * 0.1;
     this.color = randomColor();
 }
