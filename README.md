@@ -1,6 +1,8 @@
 # Confetti 
 Confetti in Javascript 
 
+[Demo](https://mike-pisman.github.io/confetti/)
+
 This program is a simple implementation of confetti effeect in Javascript using strokes. 
 The screen is scaled according to the window size. 
 For demonstration purposes you can controll certain parameters with sliders.
