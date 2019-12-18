@@ -1,4 +1,5 @@
-# Confetti v1.0.7
+# Confetti 
+v1.0.7
 Confetti in Javascript 
 
 This program is a simple implementation of confetti effeect in Javascript using strokes. 
