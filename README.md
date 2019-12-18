@@ -1,4 +1,4 @@
-# confetti
+# Confetti
 Confetti in Javascript
 
 This program is a simple implementation of confetti effeect in Javascript using strokes. 
