@@ -1,3 +1,13 @@
+<!--
+ * index.html
+ * Confetti
+ * Mikhail Pisman
+ * mike.pisman@gmail.com
+ * https://github.com/mike-pisman/confetti
+ * https://mike-pisman.github.io/confetti/
+ * This program is simple implementation of confetti effeect in Javascript using strokes. The screen is scaled square to fit the window. For demonstration you can controll certain parameters with sliders.
+-->
+
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
     <head>
@@ -64,6 +74,7 @@
             <button type="button" id="#clear">Clear</button>
         </div>
         <script type="text/javascript">
+            // Check sliders above and adjust the parameters accordingly
             document.getElementById("#particles").oninput = function() { maxParticles = this.value; }
             document.getElementById("#gravity").oninput = function() { s_gravity = this.value; }
             document.getElementById("#rotation").oninput = function() { s_rotation = this.value; }
