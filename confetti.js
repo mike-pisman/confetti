@@ -46,7 +46,7 @@ function drawConfetti () {
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
     // Create confetti if the total number is less than maxParticles
-    while (particles.length < maxParticles) {
+    if (particles.length < maxParticles) {
         // Add new particle at any "x" less than screen width(100) and "y" "s_height" above above screen, so we don't see new particles appearing
         particles.push(new Piece(Math.random() * 100, -10));
     }
@@ -62,7 +62,7 @@ function drawConfetti () {
 
         // If particle is out of borders of canvas, create new one instead
         if (p.y > 100 + p.height || p.x < 0 || p.x > 100) {
-            particles[i] = new Piece(Math.random() * 100, -10);
+            particles.splice(i, 1)
         }
 
         // Draw the shape of particle with parameters
