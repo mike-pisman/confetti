@@ -48,7 +48,7 @@ function drawConfetti () {
     // Create confetti if the total number is less than maxParticles
     while (particles.length < maxParticles) {
         // Add new particle at any "x" less than screen width(100) and "y" "s_height" above above screen, so we don't see new particles appearing
-        particles.push(new Piece(Math.random() * 100, -s_height));
+        particles.push(new Piece(Math.random() * 100, -10));
     }
 
     // Move particle
