@@ -12,9 +12,15 @@
 
             .slidecontainer {
               width: 10%; /* Width of the outside container */
+              height: 100%;
               position: fixed;
-              top: 5%;
-              right: 2.5%;
+              top: 0;
+              right: 0;
+              padding: 2.5%;
+              background-color: rgba(0, 0, 0, 0.75);
+              text-align: center;
+              font-family: Impact, Charcoal, sans-serif;
+              color: #fff;
             }
 
             .slider {
@@ -24,6 +30,16 @@
 
             p {
                 margin: 15% 0 5% 0;
+              font-family: "Courier New", Courier, monospace;
+            }
+
+            h1 {
+                color: #fff;
+            }
+
+            button {
+                margin: 20% 0 0 0;
+                padding: 5% 20%;
             }
 
         </style>
@@ -34,7 +50,7 @@
         <div class="slidecontainer">
             <h1>Confetti</h1>
             <p>Particle Number</p>
-            <input type="range" min="1" max="10000" value="1000" class="slider" id="#particles">
+            <input type="range" min="1" max="1000" value="100" class="slider" id="#particles">
             <p>Gravity Speed</p>
             <input type="range" min="0" max="100" value="50" class="slider" id="#gravity">
             <p>Rotation Speed</p>
@@ -43,6 +59,9 @@
             <input type="range" min="1" max="1000" value="50" class="slider" id="#width">
             <p>Particle Height</p>
             <input type="range" min="1" max="1000" value="50" class="slider" id="#height">
+            <p>Randomizer</p>
+            <input type="range" min="0" max="100" value="50" class="slider" id="#random">
+            <button type="button" id="#clear">Clear</button>
         </div>
         <script type="text/javascript">
             document.getElementById("#particles").oninput = function() { maxParticles = this.value; }
@@ -50,6 +69,8 @@
             document.getElementById("#rotation").oninput = function() { s_rotation = this.value; }
             document.getElementById("#width").oninput = function() { s_width = this.value; }
             document.getElementById("#height").oninput = function() { s_height = this.value; }
+            document.getElementById("#random").oninput = function() { s_random = this.value; }
+            document.getElementById("#clear").onclick = function() { clear(); }
         </script>
     </body>
 </html>
